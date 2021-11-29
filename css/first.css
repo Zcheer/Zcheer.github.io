@@ -13,8 +13,8 @@ article + article,
   contain-intrinsic-size: 10px 500px;
 }
 :root {
-  --color-site-body: #f4f4f4;
-  --color-site-bg: #f4f4f4;
+  --color-site-body: #a5d6a7;
+  --color-site-bg: #a5d6a7;
   --color-site-inner: #fff;
   --color-site-footer: #666;
   --color-card: #fff;
