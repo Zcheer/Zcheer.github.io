@@ -4,11 +4,49 @@
   
     
     <entry>
+      <title>博客更新日志</title>
+      <link href="/2021/11/30/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/"/>
+      <url>/2021/11/30/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/</url>
+      
+        <content type="html"><![CDATA[<h2 id="2021-11-29"><a href="#2021-11-29" class="headerlink" title="2021.11.29"></a>2021.11.29</h2><div class="story post-story"><ul><li>博客框架搭建</li></ul></div>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>从零开始的Hexo+Github博客搭建教程</title>
+      <link href="/2021/11/30/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Hexo-Github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/"/>
+      <url>/2021/11/30/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Hexo-Github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>必备工具</strong></p><ul><li>Node.js— 可以理解为运行在服务端的 JavaScript</li><li>git—分布式版本控制系统，总之就是控制版本更新的</li><li>hexo—用于搭建博客</li><li>github—存放文件，生成静态网页</li></ul><p><strong>可选工具</strong></p><ul><li><p>Typora—轻量级的markdown编辑器，用于博客内容编辑</p></li><li><p>Visual Studio Code—源代码编辑器，用来改代码</p><blockquote><p><del>不想用也行，反正最开始我都用记事本改的</del></p></blockquote></li><li><p>FASTLINK—科学上网所需，购买节点</p></li><li><p>V2ray—科学上网所需，代理服务器</p></li><li><p>CODING—和github类似，国内的平台，我用来作图床</p><blockquote><p>其实这个可以完全替换github，这样也不用科学上网了，而且速度也很快</p></blockquote></li></ul><p><strong>可能遇到的问题</strong></p><ol><li>所有的程序请用管理员权限运行</li><li>系统文件普通用户修改不了，要不切换用户，要不就开放权限</li></ol><h1 id="1-工具准备"><a href="#1-工具准备" class="headerlink" title="1.工具准备"></a>1.工具准备</h1><h2 id="1-1-nodejs-git环境配置"><a href="#1-1-nodejs-git环境配置" class="headerlink" title="1.1 nodejs+git环境配置"></a>1.1 nodejs+git环境配置</h2><div class="story post-story"><p><strong>nodejs</strong></p><p><a href="https://www.cnblogs.com/liuqiyun/p/8133904.html">安装教程</a>    <a href="https://nodejs.org/en/download/">下载链接</a> </p><p>我使用的版本（Windows）：<a href="https://nodejs.org/dist/v16.13.0/node-v16.13.0-x64.msi">node-v16.13.0-x64.msi</a></p><blockquote><p>最后一步npm报错找到cmd.exe用管理员身份运行</p><p>主要是要配置全局变量，这样调用更方便一点，教程中有详细步骤</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#可以稍微检查一下看看安装成功不</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure><p><strong>git</strong> </p><p><a href="https://www.cnblogs.com/xueweisuoyong/p/11914045.html">安装教程</a>     <a href="https://git-scm.com/downloads">官方下载链接</a>  </p><p>我使用的版本（Windows）：<a href="https://github.com/git-for-windows/git/releases/download/v2.11.0.windows.3/Git-2.11.0.3-64-bit.exe">Git-2.11.0.3-64-bit.exe</a></p><blockquote><p>其实不需要教程，一路点确定就好了</p><p>以及官网可能会慢</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git --version #理由同上，检查一下而已</span><br><span class="line"></span><br><span class="line">#以下部分之后再做也可以，毕竟可能你现在还没创建github账号（</span><br><span class="line">#配置部分</span><br><span class="line">git config --global user.name 你的github用户名</span><br><span class="line">git config --global user.email 你的邮箱</span><br><span class="line"></span><br><span class="line">#配置代理服务器</span><br><span class="line">git config --global http.proxy 本地ip</span><br><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure></div><h2 id="1-2-hexo安装"><a href="#1-2-hexo安装" class="headerlink" title="1.2 hexo安装"></a>1.2 hexo安装</h2><div class="story post-story"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 全局安装</span><br><span class="line">cnpm install -g hexo-cli</span><br><span class="line"># 查看hexo版本</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure></div><h2 id="1-3-搭建仓库"><a href="#1-3-搭建仓库" class="headerlink" title="1.3 搭建仓库"></a>1.3 搭建仓库</h2><div class="story post-story"><blockquote><p>没错，说的就是github，有兴趣的也可以去直接装在coding里，真的很好用的</p></blockquote><ol><li>注册账号√</li><li>搭建仓库<ul><li>仓库名称必须<strong>用户名.github.io</strong></li><li>要求<strong>公开</strong></li><li>可选添加一个README文件</li></ul></li></ol><p><img src="https://zstannum.coding.net/p/index.html/d/Zcheer/git/raw/master/images/blogs_images/20211130-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-1.png?download=true" class="lazyload" data-srcset="https://zstannum.coding.net/p/index.html/d/Zcheer/git/raw/master/images/blogs_images/20211130-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-1.png?download=true" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p><ol start="3"><li><p>创建token</p><blockquote><p>github更新后不能再使用账号密码上传文件了，改为使用token通行码，好不容易打开github就一口气全做了叭</p></blockquote></li></ol><p>​     同样是settings，找到Developer settings，Personal access tokens</p><ul><li>注意，生成的token一定要第一时间保存，因为只会显示这一次的</li></ul><h1 id="2-连接git和github"><a href="#2-连接git和github" class="headerlink" title="2.连接git和github"></a>2.连接git和github</h1><p>随便进入一个文件夹打开Git Bash</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;github注册时的邮箱&quot; </span><br><span class="line">#不管其他，反正四次回车就结束啦</span><br><span class="line">#这步操作的生成的文件夹在C:\Users\用户\.ssh  </span><br></pre></td></tr></table></figure><p>复制.ssh内id_rsa.pub里面的内容</p><p><del>（我是用记事本打开然后直接复制的）</del></p><p>进入github的settings，左侧找到SSH and GPG keys</p><p>新建SSH keys</p><blockquote><p>tittle无所谓，key里面输入复制的内容</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#测试ssh是否绑定成功</span><br><span class="line">ssh -T git@github.com</span><br><span class="line">yes</span><br><span class="line">#出现警告无所谓，只要显示你成功了就好</span><br></pre></td></tr></table></figure><h1 id="3-创建本地博客站点"><a href="#3-创建本地博客站点" class="headerlink" title="3.创建本地博客站点"></a>3.创建本地博客站点</h1><p>新建一个文件夹，作为本地博客站点，进入文件夹使用Git Bash</p><blockquote><p>我是用的D:\blog\blog</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init #初始化hexo</span><br></pre></td></tr></table></figure><p>这里就差不多框架搭建好啦，你只要慢慢修改就好啦</p><p>这一部如果不开代理的话就很容易访问不上去，所以让我们快乐的开代理√</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g #生成</span><br><span class="line">hexo s #静态生成本地的hexo页面</span><br></pre></td></tr></table></figure><h1 id="4-博客上传至互联网"><a href="#4-博客上传至互联网" class="headerlink" title="4.博客上传至互联网"></a>4.博客上传至互联网</h1><ol><li><p>找到_config.yml，进行修改</p><blockquote><p>就在本地博客的文件夹中</p></blockquote></li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy: </span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/Zcheer/Zcheer.github.io.git #你的路径</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure><ol start="2"><li>打开git bash，进入博客目录下（cd命令就好）</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save #自动发布部署工具</span><br></pre></td></tr></table></figure><ol start="3"><li>上传</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo d #生成页面</span><br><span class="line">hexo g #上传github</span><br></pre></td></tr></table></figure><p>完成啦，会跳出输入github的账号与密码</p><p>第一次上传会要求输入两次，其中第一次为账号与密码，第二次为用户名和token（虽然会提示输入密码）</p></div>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>嘿！欢迎光临！</title>
       <link href="/2021/11/29/firstmeeting/"/>
       <url>/2021/11/29/firstmeeting/</url>
       
-        <content type="html"><![CDATA[<p>这个小站的出现完全是突发奇想，脑袋一热的东西，</p><p>脑海中总是冒出一起奇奇怪怪的东西，大概是那种发说说和朋友圈感觉总觉得打扰别人，做个公众号又不太好意思，微博什么的暂时不太想经营，所以这个自娱自乐的产物就出现了（</p><ul><li><p>大概会记录日常，一些脑洞大开的想法√</p></li><li><p>也会写写学习笔记（生信课题相关），方便我以后再做相关内容的时候查看√  <del>毕竟忘记的太快</del></p></li><li><p>顺便画点画，毕竟画工也不好，所以自己看着开心就好√</p></li><li><p>还有兴趣相关的东西，至于兴趣指哪些，emm，我也不知道</p></li></ul><p>虽然我的小屋比较简陋啦，</p><p>但是你要是愿意来做客的话我会拿出最好的东西来招待你哒，</p><p>再次感谢你的来访，</p><p>我们下次再见啦~</p>]]></content>
+        <content type="html"><![CDATA[<p>这个小站的出现完全是突发奇想，脑袋一热的东西，</p><p>脑海中总是冒出一起奇奇怪怪的东西，大概是那种发说说和朋友圈总感觉会打扰别人，做个公众号又不太好意思，微博什么的暂时不太想经营，所以这个自娱自乐的产物就出现了（</p><ul><li><p>大概会记录日常，一些脑洞大开的想法√</p></li><li><p>也会写写学习笔记（生信课题相关），方便我以后再做相关内容的时候查看√  <del>毕竟忘记的太快</del></p></li><li><p>顺便画点画，毕竟画工也不好，所以自己看着开心就好√</p></li><li><p>还有兴趣相关的东西，至于兴趣指哪些，emm，我也不知道</p></li></ul><p>虽然我的小屋比较简陋啦，</p><p>但是你要是愿意来做客的话我会拿出最好的东西来招待你哒，</p><p>再次感谢你的来访，</p><p>我们下次再见啦~</p>]]></content>
       
       
       
